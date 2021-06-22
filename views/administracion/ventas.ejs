@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PROLACCIO - Ventas</title>
+	<link href="../admin/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../admin/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../admin/css/datepicker3.css" rel="stylesheet">
+	<link href="../admin/css/styles.css" rel="stylesheet">
+	
+	<!--Custom Font-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span></button>
+				<a class="navbar-brand" href="#"><span>PROLACCIO</span>Admin</a>
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<div class="profile-sidebar">
+			<div class="profile-usertitle">
+				<div class="profile-usertitle-name"><%=username%></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="divider"></div>
+		<ul class="nav menu">
+			<li><a href="/panel/resumen"><em class="fa fa-dashboard">&nbsp;</em> Resumen</a></li>
+			<li class="active"><a href="/panel/ventas"><em class="fa fa-calendar">&nbsp;</em> Ventas</a></li>
+			<li><a href="/panel/informacion"><em class="fa fa-bell">&nbsp;</em> Información</a></li>
+			<li><a href="/panel/desconectar"><em class="fa fa-power-off">&nbsp;</em> Desconectarse</a></li>
+		</ul>
+	</div><!--/.sidebar-->
+		
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active">Ventas</li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Ventas</h1>
+			</div>
+		</div><!--/.row-->
+		
+		<div class="panel-body timeline-container">
+						<ul class="timeline">
+							<% pedidos.forEach(pedido => { %>
+								<% if (pedido) { %> 
+							<li>
+								<div class="timeline-badge primary"><i class="glyphicon glyphicon-pushpin"></i></div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4 class="timeline-title"><%= pedido.nombreCompleto %> <span class="badge badge-info" style="background-color: #00ff2b;">+$<%= pedido.ganancia %> </span></h4>
+									</div>
+									<div class="timeline-body">
+										<% //Preparar los productos a un array
+										dato = [];
+										aux = "";
+											for (let i = 0; i < pedido.products.length; i++) {
+												if (pedido.products[i] == ",") {
+													dato.push(aux);
+													aux = "";
+												} else {
+													aux = aux + pedido.products[i];
+												}
+											}
+										%> 
+										<p>Email: <%= pedido.email %></p>
+										<p>Telefono: <%= pedido.telefono %> </p>
+										<p>Direccion: <%= pedido.direccion %> </p>
+										<p>Total: $<%= pedido.total %> </p>
+										<p>Productos: <ul><% productos.categorias.forEach(categor => {
+											categor.productos.forEach(producto => {
+												dato.forEach(pdi => {
+													if (pdi == producto.id) { %>
+														<li><%= producto.nombre %> <%=categor.nombre%></li> <%
+													}
+												});
+											});
+										}) %> </ul></p>
+										<% if (pedido.status) { %>
+										<form method="POST">
+											<input type="text" name="identificador" id="" style="display: none" value="<%= pedido._id %>">
+										<button type="submit" class="btn btn-danger">Finalizar venta</button>
+										</form>
+										<% } else {%>
+											<button type="submit" disabled="true" class="btn btn-success">Venta concretada</button>
+										<% } %>	
+
+										
+									</div>
+								</div>
+							</li>
+							<% }}); %> 
+						</ul>
+					</div>
+				</div>
+	</div>	<!--/.main--><script src="../admin/js/jquery-1.11.1.min.js"></script>
+
+	<script src="../admin/js/bootstrap.min.js"></script>
+</body>
+</html>

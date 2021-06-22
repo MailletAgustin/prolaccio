@@ -1,0 +1,456 @@
+{
+    "categorias": [{
+            "nombre": "Shampoo",
+            "productos": [{
+                    "id": 12,
+                    "nombre": "Coco Hidra 480cc",
+                    "descripcion": "Aceite de coco. Nutre y repara desde el interior.",
+                    "imagen": "/img/productos/COCO/shampoo coco 480cc.jpg",
+                    "precio": 480
+                },
+                {
+                    "id": 13,
+                    "nombre": "Argan Plus 480cc",
+                    "descripcion": "Favorece el crecimiento de manera abundante. Ayuda a regenerar la fibra capilar logrando un cabello hidratado y saludable.",
+                    "imagen": "/img/productos/ARGAN/shampoo argan plus 480cc.jpg",
+                    "precio": 480
+                },
+                {
+                    "id": 14,
+                    "nombre": "Durazno Soft 480cc",
+                    "descripcion": "Nutre e hidrata favoreciendo el crecimiento de un cabello sedoso y brillante.",
+                    "imagen": "/img/productos/DURAZNO SOFT/shampoo durazno soft 480cc.jpg",
+                    "precio": 480
+                },
+                {
+                    "id": 15,
+                    "nombre": "Detox 480cc",
+                    "descripcion": "Desintoxica y regenera el cuero cabelludo.",
+                    "imagen": "/img/productos/DETOX/shampoo detox 480cc.jpg",
+                    "precio": 480
+                },
+                {
+                    "id": 16,
+                    "nombre": "Lino natural 480cc",
+                    "descripcion": "Permite el crecimiento de un cabello sano combatiendo la resequedad del cuero cabelludo.",
+                    "imagen": "/img/productos/LINO/shampoo lino 480cc.jpg",
+                    "precio": 480
+                },
+                {
+                    "id": 17,
+                    "nombre": "Keratina Protect 480cc",
+                    "descripcion": "Protege y repara cabellos dañados.",
+                    "imagen": "/img/productos/KERATINA/shampoo keratina 480cc.jpg",
+                    "precio": 480
+                },
+                {
+                    "id": 18,
+                    "nombre": "Acid Post 480cc",
+                    "descripcion": "Ideal para cabellos teñidos. Restablece las cualidades naturales del cabello devolviendo brillo y sedosidad.",
+                    "imagen": "/img/productos/ACID POST/shampoo acid post 480cc.jpg",
+                    "precio": 480
+                },
+                {
+                    "id": 19,
+                    "nombre": "Melón Fresh 480cc",
+                    "descripcion": "Previene la caida del cabello y promueve su crecimiento.",
+                    "imagen": "/img/productos/MELON/shampoo melon 480cc.jpg",
+                    "precio": 480
+                },
+                {
+                    "id": 20,
+                    "nombre": "Matizador 480cc",
+                    "descripcion": "Recomendado para cabelloz cobrizos o morenos teñidos a tonos rubios. Corrige reflejos indeseados, prolonga el color del tinte.",
+                    "imagen": "/img/productos/MATIZADORES/balzamo matizador azul 480cc.jpg",
+                    "precio": 850
+                },
+                {
+                    "id": 21,
+                    "nombre": "Matizador rubios 480cc",
+                    "descripcion": "Evita reflejos en tonos amarillos. Mantiene el color del cabello teñido a rubio.",
+                    "imagen": "/img/productos/MATIZADORES/balzamo matizador shampoo violeta 480cc.jpg",
+                    "precio": 850
+                },
+                {
+                    "id": 22,
+                    "nombre": "Colageno y Elastina 480cc",
+                    "descripcion": "Clave para un crecimiento vitalizador, fortificador y voluminoso.",
+                    "imagen": "/img/productos/COLAGENO ELASTINA/shampoo colageno elastina 480cc.jpg",
+                    "precio": 480
+                },
+                {
+                    "id": 23,
+                    "nombre": "Neutro Prolaccio 480cc",
+                    "descripcion": "Limpia profundamente el cuero cabelludo preparando el cabello para un proceso químico.",
+                    "imagen": "/img/productos/NEUTRO/shampoo neutro 480cc.jpg",
+                    "precio": 480
+                }
+            ]
+        },
+        {
+            "nombre": "Acondicionador",
+            "productos": [{
+                    "id": 24,
+                    "nombre": "Coco Hidra",
+                    "descripcion": "Aceite de coco natural que ayuda a reparar cabellos dañados desde el interior.",
+                    "imagen": "/img/productos/COCO/acondicionador coco 480cc.jpg",
+                    "precio": 480
+                },
+                {
+                    "id": 25,
+                    "nombre": "Argan Plus 480cc",
+                    "descripcion": "Anti-break. Nutre y revitaliza el cuero cabelludo.",
+                    "imagen": "/img/productos/ARGAN/acondicionador argan plus 480cc.jpg",
+                    "precio": 480
+                },
+                {
+                    "id": 26,
+                    "nombre": "Lino natural 480cc",
+                    "descripcion": "Complementa la acción del shampoo para proteger e hidratar el cabello y el cuero cabelludo otorgando mayor flexibilidad y soltura.",
+                    "imagen": "/img/productos/LINO/acondicionador lino 480cc.jpg",
+                    "precio": 480
+                },
+                {
+                    "id": 27,
+                    "nombre": "Keratina Protect 480cc",
+                    "descripcion": "Ideal para cabellos largos. Reduce el frizz y volumen.",
+                    "imagen": "/img/productos/KERATINA/acondicionador keratina 480cc.jpg",
+                    "precio": 480
+                },
+                {
+                    "id": 28,
+                    "nombre": "Acid Post 480cc",
+                    "descripcion": "Cumplimiento ideal para cabellos sometidos a tratamientos quimicos.",
+                    "imagen": "/img/productos/ACID POST/acondicionador acid post 480cc.jpg",
+                    "precio": 480
+                },
+                {
+                    "id": 29,
+                    "nombre": "Colageno y Elastina 480cc",
+                    "descripcion": "Recomendado para cabellos finos, débiles y quebradizos.",
+                    "imagen": "/img/productos/COLAGENO ELASTINA/acondicionador colageno elastina 480cc.jpg",
+                    "precio": 480
+                }
+            ]
+        },
+        {
+            "nombre": "Tratamiento",
+            "productos": [{
+                    "id": 30,
+                    "nombre": "Reestructurante Coco 230cc",
+                    "descripcion": "Aceite de coco natural que contiene nutrientes esenciales para el crecimiento de un cabello sano.",
+                    "imagen": "/img/productos/COCO/reestructurante coco 230cc.jpg",
+                    "precio": 460
+                },
+                {
+                    "id": 31,
+                    "nombre": "Reestructurante Coco 480cc",
+                    "descripcion": "Aceite de coco natural que contiene nutrientes esenciales para el crecimiento de un cabello sano.",
+                    "imagen": "/img/productos/COCO/reestructurante coco 230cc.jpg",
+                    "precio": 860
+                },
+                {
+                    "id": 32,
+                    "nombre": "Reestructurante Argan 230cc",
+                    "descripcion": "Favorece el crecimiento de manera abundante.",
+                    "imagen": "/img/productos/ARGAN/tratamiento argan 230cc.jpg",
+                    "precio": 460
+                },
+                {
+                    "id": 33,
+                    "nombre": "Reestructurante Argan 480cc",
+                    "descripcion": "Favorece el crecimiento de manera abundante.",
+                    "imagen": "/img/productos/ARGAN/tratamiento argan 480cc.jpg",
+                    "precio": 860
+                },
+                {
+                    "id": 34,
+                    "nombre": "Durazno Soft 230cc",
+                    "descripcion": "Ayuda a regenerar la fibra de queratina que naturalmente tiene nuestro pelo.",
+                    "imagen": "/img/productos/DURAZNO SOFT/tratamiento capilar durazno soft 230cc.jpg",
+                    "precio": 460
+                },
+                {
+                    "id": 35,
+                    "nombre": "Durazno Soft 480cc",
+                    "descripcion": "Ayuda a regenerar la fibra de queratina que naturalmente tiene nuestro pelo.",
+                    "imagen": "/img/productos/DURAZNO SOFT/tratamiento capilar durazno soft 230cc.jpg",
+                    "precio": 860
+                },
+                {
+                    "id": 36,
+                    "nombre": "Lino Natural 230cc",
+                    "descripcion": "Alto contenido en omega 3. Hidrata y devuelve la vitalidad perdida.",
+                    "imagen": "/img/productos/LINO/tratamiento lino 230cc.jpg",
+                    "precio": 460
+                },
+                {
+                    "id": 37,
+                    "nombre": "Lino Natural 480cc",
+                    "descripcion": "Alto contenido en omega 3. Hidrata y devuelve la vitalidad perdida.",
+                    "imagen": "/img/productos/LINO/tratamiento 480cc.jpg",
+                    "precio": 860
+                },
+                {
+                    "id": 38,
+                    "nombre": "Colageno y Elastina 230cc",
+                    "descripcion": "Contiene nutrientes escenciales para darle firmeza a la fibra capilar..",
+                    "imagen": "/img/productos/COLAGENO ELASTINA/reestructurante capilar colageno elastina 230cc.jpg",
+                    "precio": 460
+                },
+                {
+                    "id": 39,
+                    "nombre": "Colageno y Elastina 480cc",
+                    "descripcion": "Contiene nutrientes escenciales para darle firmeza a la fibra capilar..",
+                    "imagen": "/img/productos/COLAGENO ELASTINA/reestructurante capilar colageno elastina 480cc.jpg",
+                    "precio": 860
+                },
+                {
+                    "id": 40,
+                    "nombre": "Keratina Protect 230cc",
+                    "descripcion": "Aporta suavidad y brillo.",
+                    "imagen": "/img/productos/KERATINA/tratamiento capilar 230cc.jpg",
+                    "precio": 460
+                },
+                {
+                    "id": 41,
+                    "nombre": "Oro líquido 480cc",
+                    "descripcion": "Aceite de rápida absorción que no deja residuos con protector térmico. Nutre las fibras capilares logrando un cabello más sano e hidratado. Efecto alisado en unos minutos.",
+                    "imagen": "/img/productos/ORO LIQUIDO/oro liquido 480cc.jpg",
+                    "precio": 1030
+                }
+            ]
+        },
+        {
+            "nombre": "Balzamo",
+            "productos": [{
+                    "id": 42,
+                    "nombre": "Matizador Color 480cc",
+                    "descripcion": "Mantiene el color original del tinte por mucho mas tiempo. Corrige reflejos indeseados que puedan aparecer.",
+                    "imagen": "/img/productos/MATIZADORES/balzamo matizador azul 480cc.jpg",
+                    "precio": 850
+                },
+                {
+                    "id": 43,
+                    "nombre": "Matizador Rubios 480cc",
+                    "descripcion": "Evita reflejos en tonos amarillos. Mantiene el color del cabello teñido a rubio.",
+                    "imagen": "/img/productos/MATIZADORES/balzamo matizador violeta 480cc.jpg",
+                    "precio": 850
+                }
+            ]
+        },
+        {
+            "nombre": "Alisador",
+            "productos": [{
+                    "id": 44,
+                    "nombre": "Lisse Colageno y Elastina 480cc",
+                    "descripcion": "Ideal para cabellos medios o gruesos.",
+                    "imagen": "/img/productos/COLAGENO ELASTINA/lisee colageno elastina 480cc.jpg",
+                    "precio": 1780
+                },
+                {
+                    "id": 45,
+                    "nombre": "Nanoplastia 480cc",
+                    "descripcion": "Reestructura, hidrata y da brillo al cabelloutilizando la nanotecnología relenando los espacios vacíos de queratina..",
+                    "imagen": "/img/productos/NANOPLASTIA/nanoplastia 480cc.jpg",
+                    "precio": 1780
+                }
+            ]
+        },
+        {
+            "nombre": "Rejuvenecedor capilar",
+            "productos": [{
+                "id": 46,
+                "nombre": "Células Madres 180cc",
+                "descripcion": "Rejuvenecedor capilar. Reparación para tratar específicamente la pérdida del cabello.",
+                "imagen": "/img/productos/CELULAS MADRES/celulas madres 180cc.jpg",
+                "precio": 550
+            }]
+        },
+        {
+            "nombre": "Serum",
+            "productos": [{
+                "id": 47,
+                "nombre": "Serum Essential",
+                "descripcion": "Silicona reparadora que ayuda a eliminar el frizz.",
+                "imagen": "/img/productos/REPARADOR DE PUNTAS/reparador de puntas .jpg",
+                "precio": 345
+            }]
+        },
+        {
+            "nombre": "Ampolla",
+            "productos": [{
+                    "id": 48,
+                    "nombre": "Ampolla Nutritiva",
+                    "descripcion": "Ampolla que ayuda a nutrir el cabello.",
+                    "imagen": "/img/productos/AMPOLLAS/ampolla nutritiva.jpg",
+                    "precio": 200
+                },
+                {
+                    "id": 50,
+                    "nombre": "Argan Plus",
+                    "descripcion": "Ampolla con vitaminas C&E.",
+                    "imagen": "/img/productos/AMPOLLAS/ampolla argan .jpg",
+                    "precio": 230
+                },
+                {
+                    "id": 49,
+                    "nombre": "Ampolla Color 30ml",
+                    "descripcion": "Intensifica y realza. ¡Hola intensidad de color!.",
+                    "imagen": "/img/productos/AMPOLLAS/ampolla color 30mll.jpg",
+                    "precio": 200
+                }
+
+            ]
+        },
+        {
+            "nombre": "Desenredante",
+            "productos": [{
+                "id": 51,
+                "nombre": "Desenredante para niños 180cc",
+                "descripcion": "Spray sin enjuague. Controla el volumen y nutre el cabello de los niños.",
+                "imagen": "/img/productos/DESENREDANTE NINOS/desenredante  ninos 180cc.jpg",
+                "precio": 368
+            }]
+        },
+        {
+            "nombre": "Biocosmetica facial",
+            "productos": [{
+                    "id": 52,
+                    "nombre": "Gel Hidratante",
+                    "descripcion": "Gel hidratante con acido hialuronico. Ayuda a tensar e hidratar la piel. Anti-arrugas.",
+                    "imagen": "/img/productos/CREMAS FACIALES/gel hidratante .jpg",
+                    "precio": 1520
+                },
+                {
+                    "id": 53,
+                    "nombre": "Cuidado intensivo",
+                    "descripcion": "Crema facial de cuidado intensivo. Hidrata la piel seca con un sistema anti-edad, nanoferas y filtro UV-UVB ANTI RADICAL.",
+                    "imagen": "/img/productos/CREMAS FACIALES/cuidado intensivo .jpg",
+                    "precio": 1715
+                }
+            ]
+        },
+        {
+            "nombre": "Maquillaje",
+            "productos": [{
+                    "id": 54,
+                    "nombre": "Labial uva",
+                    "descripcion": "Labial sabor uva ultra mate.",
+                    "imagen": "/img/productos/LABIALES/labial uva.jpg",
+                    "precio": 380
+                },
+                {
+                    "id": 55,
+                    "nombre": "labial rosa Chicle",
+                    "descripcion": "Labial sabor chicle ultra mate.",
+                    "imagen": "/img/productos/LABIALES/labial rosa chicle.jpg",
+                    "precio": 380
+                },
+                {
+                    "id": 56,
+                    "nombre": "Labial rojo pasión",
+                    "descripcion": "Labial rojo pasión de larga duración. Ultra mate.",
+                    "imagen": "/img/productos/LABIALES/labial rojo pasion .jpg",
+                    "precio": 450
+                },
+                {
+                    "id": 57,
+                    "nombre": "Labial nude",
+                    "descripcion": "Labial color nude sabor vainilla de larga duración. Ultra mate.",
+                    "imagen": "/img/productos/LABIALES/labial nude.jpg",
+                    "precio": 450
+                },
+                {
+                    "id": 58,
+                    "nombre": "Ultra Black",
+                    "descripcion": "Delineador negro HD de larga duración.",
+                    "imagen": "/img/productos/DELINEADOR/delineador .jpg",
+                    "precio": 350
+                },
+                {
+                    "id": 64,
+                    "nombre": "Pro Lash Volumen",
+                    "descripcion": "Genera una fuerza sensacional en tú mirada.",
+                    "imagen": "/img/productos/DELINEADOR/pro lash extremo volumen 9,7ml.jpg",
+                    "precio": 900
+                },
+                {
+                    "id": 65,
+                    "nombre": "Pro Lash Definicion",
+                    "descripcion": "Pestañas más largas gracias a su fórmula elástica.",
+                    "imagen": "/img/productos/DELINEADOR/pro lash extrema definicion 9,7ml.jpg",
+                    "precio": 800
+                }
+            ]
+        },
+        {
+            "nombre": "Cabello",
+            "productos": [{
+                    "id": 60,
+                    "nombre": "Ampolla Color",
+                    "descripcion": "Intensifica y realza el color.",
+                    "imagen": "/img/productos/CABELLO/ampolla color .jpg",
+                    "precio": 200
+                },
+                {
+                    "id": 61,
+                    "nombre": "Ampolla Nutritiva",
+                    "descripcion": "Nutre y repara cabellos deshidratados.",
+                    "imagen": "/img/productos/CABELLO/ampolla nutritiva 30ml.jpg",
+                    "precio": 200
+                },
+                {
+                    "id": 62,
+                    "nombre": "Control Antifrizz",
+                    "descripcion": "Crema de peinar para eliminar el frizz fácilmente.",
+                    "imagen": "/img/productos/CABELLO/crema de peinar control antifrizz 230cc.jpg",
+                    "precio": 480
+                },
+                {
+                    "id": 63,
+                    "nombre": "Shampoo Melon Fresh",
+                    "descripcion": "Promueve el crecimiento, fortifica, nutre e hidrata.",
+                    "imagen": "/img/productos/CABELLO/shampoo melon fresh 480cc.jpg",
+                    "precio": 480
+                }
+            ]
+        },
+        {
+            "nombre": "Crema Corporal",
+            "productos": [{
+                    "id": 66,
+                    "nombre": "Exfoliante Pro Regenered 150cc",
+                    "descripcion": "Elimina piel naranja y porosa, reduce piel erupcionada.",
+                    "imagen": "/img/productos/CREMACORPORAL/exfoliante pro regenered 150cc.jpg",
+                    "precio": 1999
+                },
+                {
+                    "id": 67,
+                    "nombre": "Oleo Pro Vid 30ml",
+                    "descripcion": "Regenera, hidrata y repara la piel.",
+                    "imagen": "/img/productos/CREMACORPORAL/oleo pro vid 30ml.jpg",
+                    "precio": 1999
+                }
+            ]
+        },
+        {
+            "nombre": "Hombres",
+            "productos": [{
+                    "id": 68,
+                    "nombre": "gel de afeitar 180cc",
+                    "descripcion": "Gel de afeitar para mayor suavidad",
+                    "imagen": "/img/productos/HOMBRES/serum pro barber 30ml.jpg",
+                    "precio": 1999
+                },
+                {
+                    "id": 69,
+                    "nombre": "serum pro barber 30ml",
+                    "descripcion": "¡Cuida tu barba!",
+                    "imagen": "/img/productos/HOMBRES/gel de afeitar pro men 180cc.jpg",
+                    "precio": 450
+                }
+            ]
+        }
+    ]
+}

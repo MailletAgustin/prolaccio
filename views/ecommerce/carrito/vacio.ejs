@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Aria is a business focused HTML landing page template built with Bootstrap to help you create lead generation websites for companies and their services." />
+    <meta name="author" content="Inovatik" />
+
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+    <meta property="og:site_name" content="" />
+    <!-- website name -->
+    <meta property="og:site" content="" />
+    <!-- website link -->
+    <meta property="og:title" content="" />
+    <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="" />
+    <!-- description shown in the actual shared post -->
+    <meta property="og:image" content="" />
+    <!-- image link, make sure it's jpg -->
+    <meta property="og:url" content="" />
+    <!-- where do you want your post to link to -->
+    <meta property="og:type" content="article" />
+
+    <!-- Website Title -->
+    <title>PROLACCIO Cosmetics </title>
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/fontawesome-all.css" rel="stylesheet" />
+    <link href="css/swiper.css" rel="stylesheet" />
+    <link href="css/magnific-popup.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="notf/dist/css/iziToast.min.css" />
+
+    <!-- Favicon  -->
+    <link rel="icon" href="images/logo.png" />
+</head>
+
+<body data-spy="scroll" data-target=".fixed-top">
+    <!-- Preloader -->
+    <div class="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <!-- end of preloader -->
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark navbar-custom fixed-top">
+        <!-- Text Logo - Use this if you don't have a graphic logo -->
+        <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Aria</a> -->
+
+        <!-- Image Logo -->
+        <a class="navbar-brand logo-image" href="/"><img src="images/logo.png" alt="alternative"></a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-awesome fas fa-bars"></span>
+          <span class="navbar-toggler-awesome fas fa-times"></span>
+      </button>
+        <!-- end of mobile menu toggle button -->
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="/nosotros">Sobre PROLACCIO</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" href="#">Productos</a
+            >
+            <div class="dropdown-menu">
+              <% products.categorias.forEach(cat => { %>
+              <a
+                class="dropdown-item"
+                href="/categoria/<%= cat.nombre.replace(/ /g, '-') %>"
+                ><%= cat.nombre %></a
+              >
+              <% }); %>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link page-scroll" href="/centros">Centros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="/contacto">Contacto </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" href="#">Sumate a Prolaccio</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/login/">Ingresar al Panel</a>
+                        <a class="dropdown-item" href="/register/">Registrarse</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="/carrito">Carrito</a>
+                </li>
+            </ul>
+            <span class="nav-item social-icons">
+          <a href="/carrito">
+            <i class="fa" style="font-size: 24px; color: #c061ef">&#xf07a;</i>
+            <span class="badge badge-warning" id="lblCartCount"> </span>
+            </a>
+            </span>
+        </div>
+    </nav>
+    <!-- end of navbar -->
+    <!-- end of navbar -->
+    <!-- Header -->
+    <header id="header" class="header">
+        <style>
+            header {
+                background-image: url('img/carrito.jpg');
+                background-size: cover;
+            }
+        </style>
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-5">
+                        <form class="text-left text-white" action="/carrito" method="post">
+                            <fieldset>
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <label for="inputEmail">Nombre</label>
+                                            <input type="text" class="form-control" name="nombre" id="nombre" />
+                                        </div>
+                                        <div class="col">
+                                            <label for="inputEmail">Apellido</label>
+                                            <input type="text" class="form-control" name="apellido" id="apellido" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputNombre">Correo electrónico</label>
+                                    <input type="text" class="form-control" id="email" name="email" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputNombre">Numero de telefono</label>
+                                    <input type="text" class="form-control" id="telefono" name="telefono" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputNombre">¿Donde enviamos tu pedido?</label>
+                                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Indicanos codigo postal, ciudad y dirección" />
+                                </div>
+                                <h6 class="text-white precioTotalClass" id="precioTotal">Precio total: $0</h6>
+                                <button disabled="disabled" type="submit" class="btn btn-primary">Pagar</button> <br>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <br>
+                    <!-- end of col -->
+                    <br>
+                    <div class="col-sm-12 col-lg-7 text-left">
+                        <div class="table-responsive">
+                            <table class="table text-white">
+                                <thead>
+                                    <h3 class="text-center" style="color: white; text-shadow: #000;">Carrito vacio. Regresá cuando hayas incluído productos en tu compra.</h2>
+                                        <!-- <script>
+                                            pesoTotal = '2'
+                                            VolumenTotal = '5'
+                                            CodigoPostalOrigen = 3280
+                                            CodigoPostalDestino = 3280
+                                            CantidadPaquetes = "'1n'"
+                                            ValorDeclarado = '200'
+                                            Cuit = '20424647714'
+                                            Operativa = '6'
+
+                                            url = "http://webservice.oca.com.ar/ePak_tracking/Oep_TrackEPak.asmx/Tarifar_Envio_Corporativo?PesoTotal='" + pesoTotal + "'&VolumenTotal='" + VolumenTotal + "'&CodigoPostalOrigen=" + CodigoPostalOrigen + "&CodigoPostalDestino=" + CodigoPostalDestino + "&CantidadPaquetes=" + CantidadPaquetes + "&ValorDeclarado='" + ValorDeclarado + "'&Cuit='" + Cuit + "'&Operativa='" + Operativa + "'?wsdl";
+                                            
+                                        </script> -->
+                                        <script type="text/javascript">
+                                            var xmlhttp = new XMLHttpRequest();
+
+                                            function soap() {
+                                                xmlhttp.open('POST', 'http://webservice.oca.com.ar/ePak_tracking/Oep_TrackEPak.asmx', true);
+                                                xmlhttp.setRequestHeader('Content-Type', 'text/xml');
+
+                                                // build SOAP request
+                                                var sr = '<?xml version="1.0" encoding="utf-8"?>' +
+                                                    '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">' +
+                                                    '<soap:Body>' +
+                                                    '<Tarifar_Envio_Corporativo xmlns="#Oca_e_Pak">' +
+                                                    '<PesoTotal>"1"</PesoTotal>' +
+                                                    '<VolumenTotal>"1"</VolumenTotal>' +
+                                                    '<CodigoPostalOrigen>3280</CodigoPostalOrigen>' +
+                                                    '<CodigoPostalDestino>3280</CodigoPostalDestino>' +
+                                                    '<CantidadPaquetes>1</CantidadPaquetes>' +
+                                                    '<ValorDeclarado>"180"</ValorDeclarado>' +
+                                                    '<Cuit>"20-42464771-4"</Cuit>' +
+                                                    '<Operativa>1</Operativa>' +
+                                                    '</Tarifar_Envio_Corporativo>' +
+                                                    '</soap:Body>' +
+                                                    '</soap:Envelope>';
+                                                xmlhttp.send(sr);
+                                            }
+
+                                            xmlhttp.onreadystatechange = function() {
+                                                    if (xmlhttp.readyState == 4) {
+                                                        if (xmlhttp.status == 200) {
+                                                            alert(xmlhttp.responseText);
+                                                            // alert('done. use firebug/console to see network response');
+                                                        } else {
+                                                            console.log('Error: ' + xmlhttp.responseText);
+                                                        }
+                                                    }
+                                                }
+                                                // Send the POST request
+                                            soap();
+                                            // send request
+                                            // ...
+                                        </script>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- end of row -->
+            </div>
+        </div>
+        <!-- end of container -->
+        </div>
+        <!-- end of header-content -->
+    </header>
+    <!-- end of header -->
+    <!-- end of header -->
+    <!-- Copyright -->
+    <%- include('../footer') %>
+
+        <%- include('../socialbar') %>
+
+            <!-- Scripts -->
+            <script src="js/jquery.min.js"></script>
+            <!-- jQuery for Bootstrap's JavaScript plugins -->
+            <script src="js/popper.min.js"></script>
+            <!-- Popper tooltip library for Bootstrap -->
+            <script src="js/bootstrap.min.js"></script>
+            <!-- Bootstrap framework -->
+            <script src="js/jquery.easing.min.js"></script>
+            <!-- jQuery Easing for smooth scrolling between anchors -->
+            <script src="js/swiper.min.js"></script>
+            <!-- Swiper for image and text sliders -->
+            <script src="js/jquery.magnific-popup.js"></script>
+            <!-- Magnific Popup for lightboxes -->
+            <script src="js/morphext.min.js"></script>
+            <!-- Morphtext rotating text in the header -->
+            <script src="js/isotope.pkgd.min.js"></script>
+            <!-- Isotope for filter -->
+            <script src="js/validator.min.js"></script>
+            <!-- Validator.js - Bootstrap plugin that validates forms -->
+            <script src="js/scripts.js"></script>
+            <!-- Custom scripts -->
+            <script src="notf/dist/js/iziToast.min.js" type="text/javascript"></script>
+            <script>
+                function getCookie(cname) {
+                    var name = cname + "=";
+                    var decodedCookie = decodeURIComponent(document.cookie);
+                    var ca = decodedCookie.split(";");
+                    for (var i = 0; i < ca.length; i++) {
+                        var c = ca[i];
+                        while (c.charAt(0) == " ") {
+                            c = c.substring(1);
+                        }
+                        if (c.indexOf(name) == 0) {
+                            return c.substring(name.length, c.length);
+                        }
+                    }
+                    return "";
+                }
+
+                function cart_Del(id) {
+                    var cookie = getCookie("productos");
+                    var idEliminar = id + ",";
+                    cookie = cookie.replaceAll(idEliminar, '');
+                    document.cookie = "productos=" + cookie;
+                    location.reload();
+                }
+
+                function cart_Mod(id) {
+                    console.log("Se intenta modificar el producto con id: " + id)
+                    console.log("El nuevo valor debe ser: " + document.getElementById("Producto-" + id).value);
+                    var nuevaCantidad = document.getElementById("Producto-" + id).value;
+                    var cookie = getCookie("productos");
+                    var idModificar = id + ",";
+                    cookie = cookie.replaceAll(idModificar, '');
+                    aux = idModificar.repeat(nuevaCantidad);
+                    console.log(aux);
+                    cookie = cookie + (aux);
+                    document.cookie = "productos=" + cookie;
+                    location.reload();
+                }
+
+                function contarCantidadProductos(cadena) {
+                    var indices = [];
+                    var aux = "";
+                    for (let i = 0; i < cadena.length; i++) {
+                        if (cadena[i].toLowerCase() == ",") {
+                            indices.push(aux);
+                            aux = "";
+                        } else {
+                            aux = aux + cadena[i];
+                        }
+                    }
+                    document.getElementById("lblCartCount").innerHTML = indices.length;
+                }
+                if (!getCookie("productos")) {
+                    document.getElementById("lblCartCount").innerHTML = "0";
+                } else {
+                    contarCantidadProductos(getCookie("productos"));
+                }
+
+                var indices = [];
+                var aux = "";
+
+                for (let i = 0; i < getCookie("productos").length; i++) {
+                    if (getCookie("productos")[i].toLowerCase() == ",") {
+                        indices.push(aux);
+                        aux = "";
+                    } else {
+                        aux = aux + getCookie("productos")[i];
+                    }
+                }
+                valorInicial = 0;
+                for (let i = 0; i < indices.length; i++) {
+                    elementoPrecio = "price-" + indices[i];
+                    valorInicial = valorInicial + parseInt(document.getElementById(elementoPrecio).textContent.slice(1));
+                    document.getElementById("precioTotal").textContent = "Precio total: $" + valorInicial;
+                }
+            </script>
+</body>
+
+</html>

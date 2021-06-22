@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PROLACCIO - Informacion</title>
+    <link href="../admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../admin/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../admin/css/datepicker3.css" rel="stylesheet">
+    <link href="../admin/css/styles.css" rel="stylesheet">
+
+    <!--Custom Font-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span></button>
+                <a class="navbar-brand" href="#"><span>PROLACCIO</span>Admin</a>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+        <div class="profile-sidebar">
+            <div class="profile-usertitle">
+                <div class="profile-usertitle-name">
+                    <%=username%>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="divider"></div>
+        <ul class="nav menu">
+            <li><a href="/panel/resumen"><em class="fa fa-dashboard">&nbsp;</em> Resumen</a></li>
+            <li><a href="/panel/ventas"><em class="fa fa-calendar">&nbsp;</em> Ventas</a></li>
+            <li class="active"><a href="/panel/informacion"><em class="fa fa-bell">&nbsp;</em> Información</a></li>
+            <li><a href="/panel/desconectar"><em class="fa fa-power-off">&nbsp;</em> Desconectarse</a></li>
+        </ul>
+    </div>
+    <!--/.sidebar-->
+
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="#">
+                        <em class="fa fa-home"></em>
+                    </a>
+                </li>
+                <li class="active">Informacion</li>
+            </ol>
+        </div>
+        <!--/.row-->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Informacion</h1>
+            </div>
+        </div>
+        <!--/.row-->
+        <div class="row">
+            <div class="col-lg-12">
+                <a href="/panel/informacion/catalogo">
+                    <div class="color">
+                        <h2>¡Descargar el último catálogo disponible!</h2>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="panel-body timeline-container">
+            <div class="row">
+                <div class="col-12">
+                    <%- dataMessage.texto %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .color {
+            background: hsla(339, 100%, 55%, 1);
+            background: linear-gradient(135deg, hsla(339, 100%, 55%, 0.4) 0%, hsla(325, 71%, 70%, 1) 20%, hsla(268, 53%, 57%, 0.6) 69%, hsla(197, 100%, 64%, 1) 100%);
+            background: -moz-linear-gradient(135deg, hsla(339, 100%, 55%, 0.4) 0%, hsla(325, 71%, 70%, 1) 20%, hsla(268, 53%, 57%, 0.6) 69%, hsla(197, 100%, 64%, 1) 100%);
+            background: -webkit-linear-gradient(135deg, hsla(339, 100%, 55%, 0.4) 0%, hsla(325, 71%, 70%, 1) 20%, hsla(268, 53%, 57%, 0.6) 69%, hsla(197, 100%, 64%, 1) 100%);
+            filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FF1B6B", endColorstr="#E97CBB", GradientType=1);
+            padding: 10px;
+            border-radius: 10px;
+        }
+        
+        .color>h2 {
+            text-shadow: 1px 2px rgb(110, 109, 109);
+            text-align: center;
+            font-weight: bold;
+            color: rgb(255, 255, 255);
+            margin-left: 10px;
+        }
+    </style>
+    <script src="../admin/js/jquery-1.11.1.min.js"></script>
+    <script src="../admin/js/bootstrap.min.js"></script>
+</body>
+
+</html>

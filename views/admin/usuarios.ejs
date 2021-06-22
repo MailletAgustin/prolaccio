@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PROLACCIO - Ventas</title>
+	<link href="../admin/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../admin/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../admin/css/datepicker3.css" rel="stylesheet">
+	<link href="../admin/css/styles.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+
+	<!--Custom Font-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span></button>
+				<a class="navbar-brand" href="#"><span>PROLACCIO</span>Admin</a>
+				<a id="boton-modificar" href="./modificaciones" class="navbar-right"><i style="font-size: 28pt; padding-top: 20%; padding-right: 20px;" class="fas fa-tools"></i></a>
+
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<div class="profile-sidebar">
+			<div class="profile-usertitle">
+				<div class="profile-usertitle-name">Administracion</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="divider"></div>
+		<ul class="nav menu">
+			<li><a href="/admin/resumen"><em class="fas fa-tachometer-alt">&nbsp;</em> Resumen</a></li>
+            <li><a href="/admin/ventas"><em class="fa fa-shopping-cart">&nbsp;</em> Ventas (Sin ref)</a></li>
+            <li class="active"><a href="/admin/usuarios"><em class="fa fa-users">&nbsp;</em> Usuarios</a></li>
+			<li><a href="/admin/retiros"><em class="fa fa-calendar">&nbsp;</em> Retiros</a></li>
+			<li><a href="/panel/desconectar"><em class="fa fa-power-off">&nbsp;</em> Desconectarse</a></li>
+		</ul>
+	</div><!--/.sidebar-->
+		
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active">Usuarios</li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Usuarios</h1>
+			</div>
+        </div><!--/.row-->
+        
+        <div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading"></div>
+					<div class="panel-body">
+						<div class="col-md-12">
+							
+							<h5>Listado de todos los EMAILs</h5>
+                            <%   
+							listaCorreos = '';
+							for (let i = 0; i < usuarios.length; i++) {
+							listaCorreos = listaCorreos + usuarios[i].email + ',';
+							 } %>
+							<input type="text" class="form-control" id="email" value="<%= listaCorreos %>" name="listaEmail" readonly>  
+                            <% 
+                                for (let i = 0; i < usuarios.length; i++) {
+                                    
+
+                            %>
+                                 <hr>
+							<form action="deleteUser" method="post" onsubmit="return confirm('¿¡CUIDADO!? ¿Realmente quieres eliminar este usuario? Esta acción no tiene vuela atrás.');">
+								<h5 style="display: inline-block; text-transform:capitalize"><%= usuarios[i].name %></h5>
+								<input type="text" name="idUsuario" id="idUsuario" value="<%= usuarios[i]._id %>" hidden="true">
+								<button type="submit" id="btnDeleteUser" class="btn btn-danger" style="float: right; margin-bottom: 5px">Eliminar usuario</button>
+							</form>
+                            <form>
+                                <div class="form-row">
+                                    <div class="col">
+										<style>
+											#email {
+												text-transform: lowercase;
+											}	
+										</style>
+                                    <input type="text" class="form-control" id="email" value="<%= usuarios[i].email %>" name="email" readonly>
+									<% if (usuarios[i].telefono) { %>
+										<input type="text" class="form-control" id="telefono" value="<%= usuarios[i].telefono %>" name="telefono" readonly>
+									<% } %>
+									</div>
+                                    <br>
+                                    <label for="a">Ganancias para retirar: $<%= usuarios[i].ganancias %> </label>
+                                    <br>
+									<label for="a">Total de facturación: $<%= usuarios[i].ventatotal   %> </label>
+									<%
+									var n = 0;
+									var m = 0;
+									for (let aux = 0; aux < pedidos.length; aux++) {
+										if (pedidos[aux].refCode == usuarios[i].refcode) {
+											n++
+										}
+									}
+									for (let aux = 0; aux < pedidos.length; aux++) {
+										if (pedidos[aux].refCode == usuarios[i].refcode) {
+											m = m + parseInt(pedidos[aux].total);
+										}
+									}
+									%>
+									<br>
+									<label for="a">Pedidos activos: <%= n  %> </label>
+									<br>
+									<label for="a">Total en pedidos activos: $<%= m  %> </label>
+									<br>
+									<label for="a">Clave de su panel: <%= usuarios[i].pass  %> </label>
+									<br>
+									<% if (usuarios[i].lastLogin) { %>
+									<label for="a">Ultima vez: <%= usuarios[i].lastLogin  %> </label>
+									<% } %>
+									<br>
+									<% if (usuarios[i].telefono) { %>
+									<label for="a">Telefono: <%= usuarios[i].telefono  %> </label>
+									<% } %>
+                                </div>
+                            </form>
+							<br />
+                            <br />
+                        <% } %>
+						</div>
+					</div>
+                </div>
+            </div>
+        </div>
+<script src="../admin/js/jquery-1.11.1.min.js"></script>
+	<script src="../admin/js/bootstrap.min.js"></script>
+	<script>
+		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            // document.getElementById('header').style.backgroundImage = 'url(img/Background-Home-mb.jpg)';  
+            document.getElementById('boton-modificar').style.display = 'none';  
+        }
+	</script>
+	<script>
+		function confirmar() {
+		// Confirmar envio de formulario
+			if (confirm('¿Estas seguro de enviar este formulario?')){
+				document.getElementById('btnDeleteUser').submit()
+			}	
+		}
+		
+	</script>
+</body>
+</html>
+

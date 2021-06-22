@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PROLACCIO - Ventas</title>
+	<link href="../admin/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../admin/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../admin/css/datepicker3.css" rel="stylesheet">
+	<link href="../admin/css/styles.css" rel="stylesheet">
+	
+	<!--Custom Font-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span></button>
+				<a class="navbar-brand" href="#"><span>PROLACCIO</span>Admin</a>
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<div class="profile-sidebar">
+			<div class="profile-usertitle">
+				<div class="profile-usertitle-name"><%=username%></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="divider"></div>
+		<ul class="nav menu">
+			<li class="active"><a href="/panel/resumen"><em class="fa fa-dashboard">&nbsp;</em> Resumen</a></li>
+			<li><a href="/panel/ventas"><em class="fa fa-calendar">&nbsp;</em> Ventas</a></li>
+			<li><a href="/panel/informacion"><em class="fa fa-bell">&nbsp;</em> Información</a></li>
+			<li><a href="/panel/desconectar"><em class="fa fa-power-off">&nbsp;</em> Desconectarse</a></li>
+		</ul>
+	</div><!--/.sidebar-->
+		
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active">Resumen</li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Resumen</h1>
+				<h4>Link para vender: <a href="">https://prolacciocosmetics.com/ref/<%= ref %>/</a> </h4>
+				<h4>Link para registrar: <a href="">https://prolacciocosmetics.com/ref/<%= ref %>/reg/</a> </h4>
+				<hr>
+			</div>
+		</div><!--/.row-->
+		<% 
+		a = 0;
+		pedidos.forEach(pedido => {
+			
+			if (pedido.status) {
+				a++;
+			}
+		}); %> 
+		<div class="panel panel-container">
+			<div class="row">
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-teal panel-widget border-right">
+						<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
+							<div class="large"><%= a %></div>
+							<div class="text-muted">Ventas en curso</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-blue panel-widget border-right">
+						<div class="row no-padding"><em class="fa fa-xl fa-comments color-orange"></em>
+							<div class="large"><%= visitas %></div>
+							<div class="text-muted">Visitas totales</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-orange panel-widget border-right">
+						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
+							<div class="large"><%=porcentaje%>%</div>
+							<div class="text-muted">Ventas directas</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-red panel-widget ">
+						<div class="row no-padding"><em class="fa fa-xl fa-search color-red"></em>
+							<div class="large">$<%= ganancia %> </div>
+							<div class="text-muted">Ganancias para retirar</div>
+						</div>
+					</div>
+				</div>
+			</div><!--/.row-->
+		</div>
+		
+		<div class="panel panel-container">
+			<div class="row">	
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-red panel-widget ">
+						<div class="row no-padding"><em class="fa fa-xl fa-search color-red"></em>
+							<div class="large"><%= porcentajeequipo %>% </div>
+							<div class="text-muted">Ventas de equipo</div>
+						</div>
+					</div>
+				</div>
+			</div><!--/.row-->
+		</div>
+		<form method="POST">
+			<div class="form-group">
+			  <label for="exampleInputEmail1">Correo electrónico de Mercado Pago</label>
+			  <input type="email" class="form-control" name="useremail" aria-describedby="emailHelp" placeholder="<%= useremail %>">
+			  <small id="emailHelp" class="form-text text-muted" style="color: blue">Asegurate de tener acceso y que esté correctamente escrito.</small>
+			</div>
+			<div class="form-check">
+			  <input type="checkbox" class="form-check-input" name="seguridad"  id="exampleCheck1">
+			  <label class="form-check-label" for="exampleCheck1">Estoy segura de que el email es correcto</label>
+			</div>
+			<small id="emailHelp" class="form-text text-muted" style="color: blue">Una vez solicitado el pago, no podrás volver a hacerlo hasta que te enviemos el dinero.
+			</small>
+			<br><br>
+			<input type="text" name="identificador" value="<%= useremail %>" style="display:none">
+			<input type="text" name="ganancia" value="<%= ganancia %>" style="display:none">
+			<button type="submit" class="btn btn-primary">Solicitar pago de $<%= ganancia %></button>
+
+		  </form>
+<br><br>
+	</div>	<!--/.main--><script src="../admin/js/jquery-1.11.1.min.js"></script>
+
+	<script src="../admin/js/bootstrap.min.js"></script>
+</body>
+</html>
