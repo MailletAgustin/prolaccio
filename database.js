@@ -1,11 +1,12 @@
 const { Int32 } = require('mongodb');
 const mongoose = require('mongoose');
 const uri = 'mongodb+srv://admin:nuevaass@cluster0.0qhmg.mongodb.net/' +
-  'prolaccio-panel?retryWrites=true&w=majority';
-mongoose.connect(uri, { 
+    'prolaccio-panel?retryWrites=true&w=majority';
+mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 5000 }).catch(err => console.log(err));
+    serverSelectionTimeoutMS: 5000
+}).catch(err => console.log(err));
 mongoose.connection.once('open', () => {
     console.log('Conexion a la base de datos creada con exito');
 });
@@ -23,7 +24,8 @@ var UsuarioSchema = mongoose.Schema({
     ventatotal: String,
     session: String,
     lastLogin: String,
-    telefono: String
+    telefono: String,
+    fechaIngresoNegocio: { type: Date, default: Date.now }
 });
 
 var PedidoSchema = mongoose.Schema({

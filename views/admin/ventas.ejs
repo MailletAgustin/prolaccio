@@ -71,86 +71,184 @@
             </div>
         </div>
         <!--/.row-->
+        <!-- TIMELINE -->
+        <p>
+            <a class="btn btn-primary" data-toggle="collapse" href="#sinRef" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Pedidos sin referencia</a>
+            <a class="btn btn-primary" data-toggle="collapse" href="#conRef" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Pedidos con referencia</a>
+        </p>
+        <div class="row">
+            <div class="col">
+                <div class="collapse multi-collapse" id="sinRef">
+                    <div class="panel-body timeline-container">
+                        <h3>Pedidos sin referencia</h3>
+                        <ul class="timeline">
+                            <% pedidos.forEach(pedido => { %>
+                                <% if (pedido && pedido.refCode == 'none') { %>
+                                    <li>
+                                        <div class="timeline-badge primary"><i class="glyphicon glyphicon-pushpin"></i></div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title"> Cliente:
+                                                    <%= pedido.nombreCompleto %> <span class="badge badge-info" style="background-color: #00ff2b;">+$<%= pedido.total %> </span></h4>
+                                            </div>
+                                            <div class="timeline-body">
+                                                <% //Preparar los productos a un array
+                                                    dato = [];
+                                                    aux = "";
+                                                        for (let i = 0; i < pedido.products.length; i++) {
+                                                            if (pedido.products[i] == ",") {
+                                                                dato.push(aux);
+                                                                aux = "";
+                                                            } else {
+                                                                aux = aux + pedido.products[i];
+                                                            }
+                                                        }
+                                                    %>
 
-        <div class="panel-body timeline-container">
-            <ul class="timeline">
-                <% pedidos.forEach(pedido => { %>
-                    <% if (pedido) { %>
-                        <li>
-                            <div class="timeline-badge primary"><i class="glyphicon glyphicon-pushpin"></i></div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4 class="timeline-title">
-                                        <%= pedido.nombreCompleto %> <span class="badge badge-info" style="background-color: #00ff2b;">+$<%= pedido.total %> </span></h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <% //Preparar los productos a un array
-										dato = [];
-										aux = "";
-											for (let i = 0; i < pedido.products.length; i++) {
-												if (pedido.products[i] == ",") {
-													dato.push(aux);
-													aux = "";
-												} else {
-													aux = aux + pedido.products[i];
-												}
-											}
-										%>
+                                                    <p>Email:
+                                                        <%= pedido.email %>
+                                                    </p>
+                                                    <p>Telefono:
+                                                        <%= pedido.telefono %>
+                                                    </p>
+                                                    <p>Direccion:
+                                                        <%= pedido.direccion %>
+                                                    </p>
+                                                    <p>Total: $
+                                                        <%= pedido.total %>
+                                                    </p>
+                                                    <p>Productos:
+                                                        <ul>
+                                                            <% productos.categorias.forEach(categor => {
+                                                        categor.productos.forEach(producto => {
+                                                            dato.forEach(pdi => {
+                                                                if (pdi == producto.id) { %>
+                                                                <li>
+                                                                    <%= producto.nombre %>
+                                                                        <%=categor.nombre%>
+                                                                </li>
+                                                                <%
+                                                                }
+                                                            });
+                                                        });
+                                                    }) %>
+                                                        </ul>
+                                                    </p>
 
-                                        <p>Email:
-                                            <%= pedido.email %>
-                                        </p>
-                                        <p>Telefono:
-                                            <%= pedido.telefono %>
-                                        </p>
-                                        <p>Direccion:
-                                            <%= pedido.direccion %>
-                                        </p>
-                                        <p>Total: $
-                                            <%= pedido.total %>
-                                        </p>
-                                        <p>Productos:
-                                            <ul>
-                                                <% productos.categorias.forEach(categor => {
-											categor.productos.forEach(producto => {
-												dato.forEach(pdi => {
-													if (pdi == producto.id) { %>
-                                                    <li>
-                                                        <%= producto.nombre %>
-                                                            <%=categor.nombre%>
-                                                    </li>
                                                     <%
-													}
-												});
-											});
-										}) %>
-                                            </ul>
-                                        </p>
+                                                    dia = pedido.fechaHora.getDate();
+                                                    let mes = pedido.fechaHora.getMonth() + 1
+                                                    let ano = pedido.fechaHora.getFullYear()
+                                                    if(mes < 10){
+                                                        fechaExacta = `${dia}-0${mes}-${ano}`;
+                                                    }else{
+                                                        fechaExacta =`${dia}-${mes}-${ano}`;
+                                                    }
+                                                    %>
+                                                        <% if (pedido.status) { %>
+                                                            <form method="POST">
+                                                                <input type="text" name="identificador" id="" style="display: none" value="<%= pedido._id %>">
+                                                                <button type="submit" class="btn btn-danger">Finalizar venta (Pedido iniciado en la fecha <%=fechaExacta%> )</button>
+                                                            </form>
+                                                            <% } else {%>
+                                                                <button type="submit" disabled="true" class="btn btn-success">Venta concretada (El día <%= fechaExacta %>)</button>
+                                                                <% } %>
 
-                                        <%
-										dia = pedido.fechaHora.getDate();
-										let mes = pedido.fechaHora.getMonth() + 1
-										let ano = pedido.fechaHora.getFullYear()
-										if(mes < 10){
-											fechaExacta = `${dia}-0${mes}-${ano}`;
-										}else{
-											fechaExacta =`${dia}-${mes}-${ano}`;
-										}
-										%>
-                                            <% if (pedido.status) { %>
-                                                <form method="POST">
-                                                    <input type="text" name="identificador" id="" style="display: none" value="<%= pedido._id %>">
-                                                    <button type="submit" class="btn btn-danger">Finalizar venta (Pedido iniciado en la fecha <%=fechaExacta%> )</button>
-                                                </form>
-                                                <% } else {%>
-                                                    <button type="submit" disabled="true" class="btn btn-success">Venta concretada (El día <%= fechaExacta %>)</button>
-                                                    <% } %>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <% }}); %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="collapse multi-collapse" id="conRef">
+                    <div class="panel-body timeline-container">
+                        <h3>Pedidos con referencia</h3>
+                        <ul class="timeline">
+                            <% pedidos.forEach(pedido => { %>
+                                <% if (pedido && pedido.refCode != 'none') { %>
+                                    <li>
+                                        <div class="timeline-badge primary"><i class="glyphicon glyphicon-pushpin"></i></div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title">Cliente:
+                                                    <%= pedido.nombreCompleto %> <span class="badge badge-info" style="background-color: #00ff2b;">+$<%= pedido.total %> </span></h4>
+                                            </div>
+                                            <div class="timeline-body">
+                                                <% //Preparar los productos a un array
+                                                    dato = [];
+                                                    aux = "";
+                                                        for (let i = 0; i < pedido.products.length; i++) {
+                                                            if (pedido.products[i] == ",") {
+                                                                dato.push(aux);
+                                                                aux = "";
+                                                            } else {
+                                                                aux = aux + pedido.products[i];
+                                                            }
+                                                        }
+                                                    %>
+                                                    <p> <strong> Referencia del vendedor:
+                                                        <%= pedido.refCode %></strong>
+                                                    </p>
+                                                    <p>Email:
+                                                        <%= pedido.email %>
+                                                    </p>
+                                                    <p>Telefono:
+                                                        <%= pedido.telefono %>
+                                                    </p>
+                                                    <p>Direccion:
+                                                        <%= pedido.direccion %>
+                                                    </p>
+                                                    <p>Total: $
+                                                        <%= pedido.total %>
+                                                    </p>
+                                                    <p>Productos:
+                                                        <ul>
+                                                            <% productos.categorias.forEach(categor => {
+                                                        categor.productos.forEach(producto => {
+                                                            dato.forEach(pdi => {
+                                                                if (pdi == producto.id) { %>
+                                                                <li>
+                                                                    <%= producto.nombre %>
+                                                                        <%=categor.nombre%>
+                                                                </li>
+                                                                <%
+                                                                }
+                                                            });
+                                                        });
+                                                    }) %>
+                                                        </ul>
+                                                    </p>
 
-                                </div>
-                            </div>
-                        </li>
-                        <% }}); %>
-            </ul>
+                                                    <%
+                                                    dia = pedido.fechaHora.getDate();
+                                                    let mes = pedido.fechaHora.getMonth() + 1
+                                                    let ano = pedido.fechaHora.getFullYear()
+                                                    if(mes < 10){
+                                                        fechaExacta = `${dia}-0${mes}-${ano}`;
+                                                    }else{
+                                                        fechaExacta =`${dia}-${mes}-${ano}`;
+                                                    }
+                                                    %>
+                                                        <% if (pedido.status) { %>
+                                                            <form method="POST">
+                                                                <input type="text" name="identificador" id="" style="display: none" value="<%= pedido._id %>">
+                                                                <button type="submit" class="btn btn-danger">Finalizar venta (Pedido iniciado en la fecha <%=fechaExacta%> )</button>
+                                                            </form>
+                                                            <% } else {%>
+                                                                <button type="submit" disabled="true" class="btn btn-success">Venta concretada (El día <%= fechaExacta %>)</button>
+                                                                <% } %>
+
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <% }}); %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="../admin/js/jquery-1.11.1.min.js"></script>

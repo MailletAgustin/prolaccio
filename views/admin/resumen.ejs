@@ -95,8 +95,11 @@
         </div>
     </div>
     <!--/.row-->
-    <% a = 0; %>
+    <% a = 0; b = 0;%>
         <% pedidosList.forEach(pedido => {
+            if (pedido.refCode == 'none' && pedido.status == true) {
+                b++;
+            }
       if (pedido.status == true) { a++; } }); %>
             <div class="panel panel-container">
                 <div class="row">
@@ -148,7 +151,7 @@
                   totalRetiros + parseInt(retirosList[i].montototal); } for (let
                   i = 0; i < usersList.length; i++) { total = total +
                   parseInt(usersList[i].ventatotal); } %>
-                                        <%= a %>
+                                        <%= b %>
                                 </div>
                                 <div class="text-muted">Pedidos sin referencia</div>
                             </div>
