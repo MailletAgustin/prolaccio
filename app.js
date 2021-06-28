@@ -6,14 +6,14 @@ const app = express();
 const fs = require("fs");
 const http = require("http").createServer(app);
 const https = require("https").createServer({
-        // key: fs.readFileSync('/etc/letsencrypt/live/prolacciocosmetics.com/privkey.pem'),
-        // cert: fs.readFileSync('/etc/letsencrypt/live/prolacciocosmetics.com/cert.pem'),
-        // ca: fs.readFileSync('/etc/letsencrypt/live/prolacciocosmetics.com/chain.pem'),
+        key: fs.readFileSync('/etc/letsencrypt/live/prolacciocosmetics.com/privkey.pem'),
+        cert: fs.readFileSync('/etc/letsencrypt/live/prolacciocosmetics.com/cert.pem'),
+        ca: fs.readFileSync('/etc/letsencrypt/live/prolacciocosmetics.com/chain.pem'),
         rejectUnauthorized: false,
     },
     app
 );
-const io = require("socket.io")(http); // Sockets.io (Usado en productos y Login / register)
+const io = require("socket.io")(https); // Sockets.io (Usado en productos y Login / register)
 const validator = require("email-validator"); // Validador de datos
 const cookieParser = require("cookie-parser"); // Traspaso de cookies
 const bodyParser = require("body-parser");
