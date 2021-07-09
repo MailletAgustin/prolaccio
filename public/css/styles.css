@@ -347,11 +347,11 @@ screen and (-ms-high-contrast: none) {
 }
 
 #navbarsExampleDefault>ul>li>a {
-    color: #c043ff;
+    color: #833ab4;
 }
 
 #navbarsExampleDefault>ul>li>a:hover {
-    color: #421c57;
+    color: #c2c2c2;
 }
 
 select {
@@ -1969,13 +1969,13 @@ a.back-to-top {
     width: 2.625rem;
     height: 2.625rem;
     border-radius: 1.875rem;
-    background: #763695 url("../images/up-arrow.png") no-repeat center 47%;
+    background: #833ab4 url("../images/up-arrow.png") no-repeat center 47%;
     background-size: 1.125rem 1.125rem;
     text-indent: -9999px;
 }
 
 a:hover.back-to-top {
-    background-color: #13aa87;
+    background-color: #c2c2c2;
 }
 
 

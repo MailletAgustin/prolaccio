@@ -445,30 +445,16 @@
     <!-- Contact -->
     <div id="contact" class="form-2">
         <div class="container">
-            <div class="row">
+            <div class="row" id="sin-filtro">
                 <div class="col-lg-6">
                     <div class="text-container">
-                        <div class="section-title">CONTACTO</div>
-                        <h2>Te responderemos a la brevedad.</h2>
-                        <p>Escribinos en cualquier momento o visitanos en nuestro showroom de 08:00 a 20:00hs de lunes a viernes!</p>
+                        <div class="section-title">CONTÁCTANOS</div>
+                        <p></p>
                         <ul class="list-unstyled li-space-lg">
-                            <li class="address"><i class="fas fa-map-marker-alt"></i>San Luis 713, Esquina Mariano Moreno, 5900, Villa Maria, Cordoba, Argentina.</li>
-                            <li><i class="fas fa-phone"></i><a href="tel:3534795384">Atencion al cliente 3534795384</a></li>
-                            <li><i class="fas fa-phone"></i><a href="tel:1151786783">Ventas 1151786783</a></li>
+                            <li class="address"><i class="fas fa-map-marker-alt"></i>Mariano Moreno 499, Villa María, Córdoba, Argentina.</li>
+                            <li><i class="fas fa-phone"></i><a href="tel:3534795384">Atencion al cliente 01151786783</a></li>
                             <li><i class="fas fa-envelope"></i><a href="mailto:ventas@prolacciocosmetics.com">administracion@prolacciocosmetics.com</a></li>
                         </ul>
-                        <h3>Sigue a PROLACCIO en nuestras redes!</h3>
-
-                        <span class="fa-stack">
-                            <a href="https://www.facebook.com/PROLACCIOOFICIAL">
-                                <i class="fab fa-facebook-f fa-stack-1x"></i>
-                            </a>
-                        </span>
-                        <span class="fa-stack">
-                            <a href="https://www.instagram.com/prolaccio">
-                                <i class="fab fa-instagram fa-stack-1x"></i>
-                            </a>
-                        </span>
                     </div>
                     <!-- end of text-container -->
                 </div>
@@ -477,22 +463,37 @@
 
                     <!-- Contact Form -->
                     <form method="post" action="/" id="contactForm" data-toggle="validator" data-focus="false">
-                        <div class="form-group">
+                        <div class="form-group text-uppercase">
                             <input type="text" class="form-control-input" id="cname" name="cname" required>
-                            <label class="label-control" for="cname">Nombre</label>
+                            <label class="label-control" for="cname">Nombre *</label>
                             <div class="help-block with-errors"></div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group text-uppercase">
+                            <input type="text" class="form-control-input" id="capell" name="capell" required>
+                            <label class="label-control" for="capell">Apellido *</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group text-uppercase">
+                            <input type="number" class="form-control-input" id="cnumb" name="cnumb" required>
+                            <label class="label-control" for="cnumb">Teléfono *</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group text-uppercase">
                             <input type="email" class="form-control-input" id="cemail" name="cemail" required>
-                            <label class="label-control" for="cemail">Email</label>
+                            <label class="label-control" for="cemail">Correo Electrónico *</label>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control-textarea" id="cmessage" name="cmensaje" required></textarea>
-                            <label class="label-control" for="cmessage">Tu mensaje</label>
+                            <textarea class="form-control-textarea" id="cmessage" name="cmensaje"></textarea>
+                            <label class="label-control" for="cmessage">Mensaje</label>
                             <div class="help-block with-errors"></div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-check form-check-inline align-self-center">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Si desea recibir novedades" checked>
+                            <label class="form-check-label" for="inlineCheckbox1">Quiero recibir novedades y promociones de PROLACCIO.</label>
+                          </div>
+                          <p> <small> campos obligatorios * </small></p>
+                        <div class="form-group mt-2">
                             <button type="submit" class="form-control-submit-button">Enviar mensaje</button>
                         </div>
                         <div class="form-message">
@@ -610,6 +611,13 @@
                 }
             </script>
             <style>
+                #contact {
+                    background-image:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url('img/banner-contacto.jpeg');
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                }
+
+                
                 .color {
                     background: hsla(339, 100%, 55%, 1);
                     background: linear-gradient(135deg, hsla(339, 100%, 55%, 0.4) 0%, hsla(325, 71%, 70%, 1) 20%, hsla(268, 53%, 57%, 0.6) 69%, hsla(197, 100%, 64%, 1) 100%);

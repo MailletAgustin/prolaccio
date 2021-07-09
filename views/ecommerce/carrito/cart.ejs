@@ -168,6 +168,18 @@
                   />
                 </div>
                 <h6 class="text-white precioTotalClass" id="precioTotal">Precio total: $0</h6>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="comoPagar" disabled value="efectivo" >
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Pagar en efectivo en la sucursal mas cercana
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="comoPagar" value="tarjeta" checked>
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    Pagar con otros medios de pago
+                  </label>
+                </div> <br>
                 <button type="submit" class="btn btn-primary">Pagar</button> <br>
               </fieldset>
               </form>
@@ -328,6 +340,7 @@
         }
         document.getElementById("lblCartCount").innerHTML = indices.length;
       }
+      
       if (!getCookie("productos")) {
         document.getElementById("lblCartCount").innerHTML = "0";
       } else {
@@ -349,8 +362,9 @@
         for (let i = 0; i < indices.length; i++) {
           elementoPrecio = "price-" + indices[i];
           valorInicial = valorInicial + parseInt(document.getElementById(elementoPrecio).textContent.slice(1));
-          document.getElementById("precioTotal").textContent = "Precio total: $" + valorInicial;
+          document.getElementById("precioTotal").textContent = "Precio total: $" + valorInicial + " ¿Como desea abonar?";
         }
+        
     </script>
   </body>
 </html>

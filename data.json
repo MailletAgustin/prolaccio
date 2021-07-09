@@ -258,7 +258,7 @@
             ]
         },
         {
-            "nombre": "Rejuvenecedor capilar",
+            "nombre": "Rejuvenecedor Capilar",
             "productos": [{
                 "id": 46,
                 "nombre": "Células Madres 180cc",
@@ -314,7 +314,7 @@
             }]
         },
         {
-            "nombre": "Biocosmetica facial",
+            "nombre": "Biocosmetica Facial",
             "productos": [{
                     "id": 52,
                     "nombre": "Gel Hidratante",
@@ -324,7 +324,7 @@
                 },
                 {
                     "id": 53,
-                    "nombre": "Cuidado intensivo",
+                    "nombre": "Cuidado Intensivo",
                     "descripcion": "Crema facial de cuidado intensivo. Hidrata la piel seca con un sistema anti-edad, nanoferas y filtro UV-UVB ANTI RADICAL.",
                     "imagen": "/img/productos/CREMAS FACIALES/cuidado intensivo .jpg",
                     "precio": 1715
@@ -438,15 +438,15 @@
             "nombre": "Hombres",
             "productos": [{
                     "id": 68,
-                    "nombre": "gel de afeitar 180cc",
-                    "descripcion": "Gel de afeitar para mayor suavidad",
+                    "nombre": "Serum Pro Men Barber 30ml",
+                    "descripcion": "¡Cuida tu barba!",
                     "imagen": "/img/productos/HOMBRES/serum pro barber 30ml.jpg",
                     "precio": 1999
                 },
                 {
                     "id": 69,
-                    "nombre": "serum pro barber 30ml",
-                    "descripcion": "¡Cuida tu barba!",
+                    "nombre": "Gel de Afeitar 180cc",
+                    "descripcion": "¡Cuida tu piel al maximo!",
                     "imagen": "/img/productos/HOMBRES/gel de afeitar pro men 180cc.jpg",
                     "precio": 450
                 }

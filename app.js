@@ -5,15 +5,15 @@ const express = require("express"); // Express
 const app = express();
 const fs = require("fs");
 const http = require("http").createServer(app);
-const https = require("https").createServer({
-        key: fs.readFileSync('/etc/letsencrypt/live/prolacciocosmetics.com/privkey.pem'),
-        cert: fs.readFileSync('/etc/letsencrypt/live/prolacciocosmetics.com/cert.pem'),
-        ca: fs.readFileSync('/etc/letsencrypt/live/prolacciocosmetics.com/chain.pem'),
+const https = require("http").createServer({
+        // key: fs.readFileSync('/etc/letsencrypt/live/prolacciocosmetics.com/privkey.pem'),
+        // cert: fs.readFileSync('/etc/letsencrypt/live/prolacciocosmetics.com/cert.pem'),
+        // ca: fs.readFileSync('/etc/letsencrypt/live/prolacciocosmetics.com/chain.pem'),
         rejectUnauthorized: false,
     },
     app
 );
-const io = require("socket.io")(https); // Sockets.io (Usado en productos y Login / register)
+const io = require("socket.io")(http); // Sockets.io (Usado en productos y Login / register)
 const validator = require("email-validator"); // Validador de datos
 const cookieParser = require("cookie-parser"); // Traspaso de cookies
 const bodyParser = require("body-parser");
@@ -654,81 +654,281 @@ app.post("/admin/modificaciones/producto/precio", (req, res, next) => {
 });
 
 app.post("/carrito", function(req, res, next) {
-    strProductos = req.cookies.productos;
-    var indices = [];
-    var aux = "";
-    // Crea un objeto de preferencia
-    for (let i = 0; i < strProductos.length; i++) {
-        if (strProductos[i].toLowerCase() == ",") {
-            indices.push(aux);
-            aux = "";
+
+    if (req.body.comoPagar == 'tarjeta') {
+        strProductos = req.cookies.productos;
+        var indices = [];
+        var aux = "";
+        // Crea un objeto de preferencia
+        for (let i = 0; i < strProductos.length; i++) {
+            if (strProductos[i].toLowerCase() == ",") {
+                indices.push(aux);
+                aux = "";
+            } else {
+                aux = aux + strProductos[i];
+            }
+        }
+        let precioFinal = 0;
+        for (let i = 0; i < indices.length; i++) {
+            products.categorias.forEach(function(categoria) {
+                categoria.productos.forEach(function(producto) {
+                    if (producto.id == indices[i]) {
+                        precioFinal = precioFinal + producto.precio;
+                    }
+                });
+            });
+        }
+        var external_ref = "";
+        // Agregar refcode
+        if (req.cookies.refcode) {
+            external_ref = strProductos + "|" + req.cookies.refcode + "|";
         } else {
-            aux = aux + strProductos[i];
+            external_ref = strProductos + "|none|";
+        }
+    
+        //Agregar variables del formulario al external ref
+        if (
+            req.body.nombre &&
+            req.body.apellido &&
+            req.body.telefono &&
+            req.body.direccion &&
+            validator.validate(req.body.email)
+        ) {
+            external_ref =
+                external_ref +
+                req.body.nombre +
+                " " +
+                req.body.apellido +
+                "|" +
+                req.body.telefono +
+                "|" +
+                req.body.direccion +
+                "|" +
+                req.body.email +
+                "|";
+    
+            preference = {
+                binary_mode: true,
+                external_reference: external_ref,
+                notification_url: "http://prolacciocosmetics.com/notificacion/pago",
+                items: [{
+                    id: "0",
+                    title: "Pago total - Prolaccio Web",
+                    unit_price: precioFinal,
+                    quantity: 1,
+                }, ],
+            };
+    
+            mercadopago.preferences
+                .create(preference)
+                .then(function(response) {
+                    global.id = response.body.id;
+                    //console.log(response);
+                    res.redirect(response.body.init_point);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        } else {
+            res.redirect("/carrito");
         }
     }
-    let precioFinal = 0;
-    for (let i = 0; i < indices.length; i++) {
-        products.categorias.forEach(function(categoria) {
-            categoria.productos.forEach(function(producto) {
-                if (producto.id == indices[i]) {
-                    precioFinal = precioFinal + producto.precio;
+    if (req.body.comoPagar == 'efectivo') {
+        strProductos = req.cookies.productos;
+        var indices = [];
+        var aux = "";
+        // Crea un objeto de preferencia
+        for (let i = 0; i < strProductos.length; i++) {
+            if (strProductos[i].toLowerCase() == ",") {
+                indices.push(aux);
+                aux = "";
+            } else {
+                aux = aux + strProductos[i];
+            }
+        }
+        let precioFinal = 0;
+        for (let i = 0; i < indices.length; i++) {
+            products.categorias.forEach(function(categoria) {
+                categoria.productos.forEach(function(producto) {
+                    if (producto.id == indices[i]) {
+                        precioFinal = precioFinal + producto.precio;
+                    }
+                });
+            });
+        }
+        var external_ref = "";
+        // Agregar refcode
+        if (req.cookies.refcode) {
+            external_ref = strProductos + "|" + req.cookies.refcode + "|";
+        } else {
+            external_ref = strProductos + "|none|";
+        }
+    
+        //Agregar variables del formulario al external ref
+        if (
+            req.body.nombre &&
+            req.body.apellido &&
+            req.body.telefono &&
+            req.body.direccion &&
+            validator.validate(req.body.email)
+        ) {
+            external_ref =
+                external_ref +
+                req.body.nombre +
+                " " +
+                req.body.apellido +
+                "|" +
+                req.body.telefono +
+                "|" +
+                req.body.direccion +
+                "|" +
+                req.body.email +
+                "|";
+    
+                // Inicio del PEDIDO
+                console.log("El pedido se va a crear");
+                //Crear el pedido con la info anterior
+                // Rescatar los objetos de External Reference
+                ext_ref = external_ref;
+                dato = [];
+                aux = "";
+                for (let i = 0; i < ext_ref.length; i++) {
+                    if (ext_ref[i].toLowerCase() == "|") {
+                        dato.push(aux);
+                        aux = "";
+                    } else {
+                        aux = aux + ext_ref[i];
+                    }
                 }
-            });
-        });
-    }
-    var external_ref = "";
-    // Agregar refcode
-    if (req.cookies.refcode) {
-        external_ref = strProductos + "|" + req.cookies.refcode + "|";
-    } else {
-        external_ref = strProductos + "|none|";
-    }
+                // ##### Datos de la venta #########
+                // dato[0] = String productos
+                // dato[1] = Refcode
+                // dato[2] = Nombre completo
+                // dato[3] = Telefono
+                // dato[4] = Direccion
+                // dato[5] = Email
 
-    //Agregar variables del formulario al external ref
-    if (
-        req.body.nombre &&
-        req.body.apellido &&
-        req.body.telefono &&
-        req.body.direccion &&
-        validator.validate(req.body.email)
-    ) {
-        external_ref =
-            external_ref +
-            req.body.nombre +
-            " " +
-            req.body.apellido +
-            "|" +
-            req.body.telefono +
-            "|" +
-            req.body.direccion +
-            "|" +
-            req.body.email +
-            "|";
+                var p, g, pg;
+                db.Usuario.findOne({ refcode: dato[1] }, (err, usuario) => {
+                    if (usuario) {
+                        console.log("Existe un usuario");
+                        p = usuario.parentrefcode;
+                        g = usuario.ganancias;
+                        pg = usuario.porcentaje;
+                    } else {
+                        console.log("El usuario no existe");
+                        p = "none";
+                        g = "0";
+                        pg = "100";
+                    }
 
-        preference = {
-            binary_mode: true,
-            external_reference: external_ref,
-            notification_url: "http://prolacciocosmetics.com/notificacion/pago",
-            items: [{
-                id: "0",
-                title: "Pago total - Prolaccio Web",
-                unit_price: precioFinal,
-                quantity: 1,
-            }, ],
-        };
+                    vt = precioFinal;
+                    pv = parseInt(pg);
+                    gv = (pv * vt) / 100;
+                    gv = Math.round(gv);
+                    gv = gv.toString();
 
-        mercadopago.preferences
-            .create(preference)
-            .then(function(response) {
-                global.id = response.body.id;
-                //console.log(response);
-                res.redirect(response.body.init_point);
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-    } else {
-        res.redirect("/carrito");
+                    //Ganancia total:
+                    console.log(gv);
+                    db.Pedido.create({
+                        products: dato[0],
+                        refCode: dato[1],
+                        nombreCompleto: dato[2],
+                        total: precioFinal,
+                        ganancia: gv,
+                        direccion: dato[4],
+                        telefono: dato[3],
+                        email: dato[5],
+                        status: true,
+                    });
+
+                    var gv2 = gv;
+                    if (usuario) {
+                        // Se agrega la ganancia al vendedor
+                        usuario.ganancias = (
+                            parseInt(usuario.ganancias) + parseInt(gv2)
+                        ).toString();
+                        usuario.ventatotal = (
+                            parseInt(usuario.ventatotal) + precioFinal
+                        ).toString();
+                        console.log(usuario.ganancias);
+                        console.log(usuario.ventatotal);
+                        // Se revisa el Porcentaje
+                        // Falta probar
+                        var nuevoPorcentaje;
+                        if (parseInt(usuario.ventatotal) > 25000) {
+                            nuevoPorcentaje = "30";
+                            usuario.porcentaje = nuevoPorcentaje;
+                        } else {
+                            if (parseInt(usuario.ventatotal) < 25000) {
+                                nuevoPorcentaje = "20";
+                                usuario.porcentaje = nuevoPorcentaje;
+                            }
+                            if (parseInt(usuario.ventatotal) < 12000) {
+                                nuevoPorcentaje = "15";
+                                usuario.porcentaje = nuevoPorcentaje;
+                            }
+                        }
+                        //Se envía el EMAIL al VENDEDOR
+                        var mailOptions = {
+                            from: "ventas@prolacciocosmetics.com",
+                            to: usuario.email,
+                            subject: "¡Se ha recibido una nueva venta!",
+                            text: "Ingresá a tu panel y revisá los detalles",
+                        };
+
+                        transporter.sendMail(mailOptions, function(error, info) {
+                            if (error) {
+                                console.log("Error en enviar EMAIL", error);
+                            }
+                        });
+
+                        //Se guarda lo del USUARIO
+                        usuario.save();
+
+                        //Se envia correo al COMPRADOR
+                        var mailOptions = {
+                            from: "ventas@prolacciocosmetics.com",
+                            to: dato[5].email,
+                            subject: "¡Se ha aceptado tu compra!",
+                            text: "Pronto una vendedora se contactará contigo para coordinar la entrega. ¡Muchas gracias por su compra!",
+                        };
+
+                        transporter.sendMail(mailOptions, function(error, info) {
+                            if (error) {
+                                console.log("Error en enviar EMAIL", error);
+                            }
+                        });
+                    }
+                    // acción Se agrega la ganancia al parentRefCode (% del total) - Si es diferente de NONE
+                    if (p == "none") {
+                        console.log("El usuario no tiene ParentRefCode");
+                    } else {
+                        db.Usuario.findOne({ refcode: p }, (problema, padre) => {
+                            if (problema) {
+                                console.log(problema);
+                            }
+                            console.log(
+                                "Se agrega la ganancia del: " +
+                                porcentajePorReferido +
+                                " al parentRefCode"
+                            );
+                            padreGanancia =
+                                (porcentajePorReferido * precioFinal) /
+                                100;
+                            padreGananciaString = parseInt(padre.ganancias);
+                            padreGanancia = padreGanancia + padreGananciaString;
+                            padre.ganancias = padreGanancia.toString();
+                            padre.save();
+                        });
+                    }
+                });
+                // Finalizacion del pedido
+                // ######################################## () > '/carrito/gracias' > Link al home / reestablecer cookies
+                // Redireccionar a un sitio que diga "Pedido creado, retiralo en la sucursal más cercana + mapa"
+        } else {
+            res.redirect("/carrito");
+        }
     }
 });
 app.post("/notificacion/pago", (req, res) => {
