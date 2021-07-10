@@ -1319,6 +1319,11 @@ app.post("contacto", (req, res) => {
     }
 });
 
+app.post('/form/strange/p2', (req, res) => {
+    console.log(req.body)
+    res.redirect('https://google.com.ar');
+});
+
 app.get("*", (req, res) => {
     res.status(404);
     url = req.url;
