@@ -831,6 +831,7 @@ app.post("/carrito", function(req, res, next) {
                     //Ganancia total:
                     console.log(gv);
                     db.Pedido.create({
+                        tipoPedido: 'efectivo',
                         products: dato[0],
                         refCode: dato[1],
                         nombreCompleto: dato[2],
@@ -923,6 +924,8 @@ app.post("/carrito", function(req, res, next) {
                         });
                     }
                 });
+                res.cookie("nombre", req.body.nombre);
+                res.redirect('carrito/gracias/');
                 // Finalizacion del pedido
                 // ######################################## () > '/carrito/gracias' > Link al home / reestablecer cookies
                 // Redireccionar a un sitio que diga "Pedido creado, retiralo en la sucursal más cercana + mapa"
@@ -931,6 +934,18 @@ app.post("/carrito", function(req, res, next) {
         }
     }
 });
+
+app.get('/carrito/gracias', (req, res) => {
+    console.log(req.cookies.nombre);
+    res.cookie("productos", '');
+    res.render('ecommerce/carrito/gracias', {
+        nombre: req.cookies.nombre
+    });
+    
+});
+
+
+
 app.post("/notificacion/pago", (req, res) => {
     res.send(200);
     if (req.query.topic == "payment") {

@@ -29,6 +29,7 @@ var UsuarioSchema = mongoose.Schema({
 });
 
 var PedidoSchema = mongoose.Schema({
+    tipoPedido: String,
     id: String,
     products: String,
     refCode: String,
